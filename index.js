@@ -7,7 +7,7 @@ var File = module.exports = function(opts) {
 	// Setup defaults
 	this.filename = opts.filename || 'package.json';
 	this.base = opts.base ? path.resolve(opts.base) : process.cwd();
-	this.path = path.join(this.base, this.filename);
+	this.path = null;
 	this.contents = {};
 	this.delim = opts.delim || ':';
 };
@@ -88,19 +88,22 @@ File.prototype.read = function(done) {
 			done(this.contents);
 		}
 	} else {
-		// Return the contents
-		done(this.contents);
+		// Havent found it yet, so find it then read it
+		this.find(this.read.bind(this, done));
 	}
 };
 
 File.prototype.readSync = function() {
-	if (this.path) {
-		// Read the file and parse as json
-		try {
-			var j = fs.readFileSync(this.path);
-			this.contents = JSON.parse(j);
-		} catch(e) {}
+	// Find it first
+	if (!this.path) {
+		this.findSync();
 	}
+
+	// Read the file and parse as json
+	try {
+		var j = fs.readFileSync(this.path);
+		this.contents = JSON.parse(j);
+	} catch(e) {}
 
 	// Return the contents, even if it failed
 	return this.contents;

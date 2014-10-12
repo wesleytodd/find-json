@@ -1,6 +1,6 @@
 {
   "name": "find-json",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Find a json file, read it in and query against its data",
   "main": "index.js",
   "scripts": {
