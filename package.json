@@ -1,0 +1,22 @@
+{
+  "name": "find-json",
+  "version": "0.0.0",
+  "description": "Find a json file, read it in and query against its data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "json"
+  ],
+  "author": "Wes Todd",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wesleytodd/find-json.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wesleytodd/find-json/issues"
+  },
+  "homepage": "https://github.com/wesleytodd/find-json"
+}
